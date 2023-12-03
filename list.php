@@ -1,6 +1,20 @@
 <?php
 include ('connection.php');
-$query = mysqli_query($connect,"SELECT * FROM mahasiswa");
+
+function query($sql)
+{
+    global $connect;
+    return mysqli_query($connect, $sql);
+}
+
+
+$jumlahDataPerHalaman = 2;
+$queryResult = query("SELECT * FROM mahasiswa");
+$jumlahData = mysqli_num_rows($queryResult);
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
+$awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+$query = mysqli_query($connect,"SELECT * FROM mahasiswa limit $awalData, $jumlahDataPerHalaman");
 $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
 if(isset($_POST['cari'])){
@@ -9,6 +23,7 @@ if(isset($_POST['cari'])){
     nim LIKE '%$keyword%' OR alamat LIKE '%$keyword%' OR jk LIKE '%$keyword%' OR hobi LIKE '%$keyword%'");
     $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
 }
+
 ?>
 <html>
 <head>
@@ -27,7 +42,9 @@ if(isset($_POST['cari'])){
     <input type="text" name="keyword" size="30" placeholder="Masukan Pencarian" autocomplete="off">
     <button type="submit" name="cari">Cari</button> 
     </form>
+    
     <br>
+
  <table border="1"class="table table-hover table-striped">
  <tr>
  <th>Id</th>
@@ -54,6 +71,24 @@ if(isset($_POST['cari'])){
  </tr>
  <?php endforeach ?>
  </table>
+  <br></br>
+
+  <?php if($halamanAktif > 1) : ?>
+  <a href="?halaman=<?= $halamanAktif - 1;?>">&laquo;</a>
+  <?php endif; ?>
+  <?php for($i =1; $i <= $jumlahHalaman; $i++) :?>
+    <?php if($i == $halamanAktif) : ?>
+        <a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: red;"><?= $i; ?></a>
+    <a href="?halaman=<?= $i; ?>"></a>
+    <?php else : ?>
+        <a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+    <?php endif; ?>
+<?php endfor; ?>
+<?php if($halamanAktif < $jumlahHalaman) : ?>
+  <a href="?halaman=<?= $halamanAktif + 1;?>">&raquo;</a>
+  <?php endif; ?>
+
+
  </div>
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
