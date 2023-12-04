@@ -26,6 +26,9 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
  <option value="Olahraga"<?php echo ($result[0]['hobi'] =='olahraga') ? 'selected' : '';?> >Olahraga</option>
  </select>
 </br></br>
+<label>No Telepon</label><br/>
+ <input type="text" name="notelp" value="<?php echo $result[0]['notelp']?>"/><!--menampilkan data sesuai dr variabel $result diatas-->
+ <br/><br/>
  <button type="submit">Perbaharui</button>
  </form>
 </html>

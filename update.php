@@ -9,7 +9,8 @@ $nama = htmlspecialchars($_POST['nama']); // Index didalamnya sesuai dengan inpu
 $alamat = htmlspecialchars($_POST['alamat']);
 $jk = htmlspecialchars($_POST['jk']);
 $hobi = htmlspecialchars($_POST['hobi']);
-$update = mysqli_query($connect,"UPDATE mahasiswa SET nim='$nim',nama='$nama', alamat='$alamat', jk='$jk' , hobi='$hobi' WHERE id='$id' "); //menggunakan kondisi where untuk menyimpan dengan data spesifik
+$notelp = htmlspecialchars($_POST['notelp']);
+$update = mysqli_query($connect,"UPDATE mahasiswa SET nim='$nim',nama='$nama', alamat='$alamat', jk='$jk' , hobi='$hobi', notelp='$notelp' WHERE id='$id' "); //menggunakan kondisi where untuk menyimpan dengan data spesifik
 if($update)
  header('Location:list.php'); // Jika berhasil akan di arahkan ke halaman list.php
 else

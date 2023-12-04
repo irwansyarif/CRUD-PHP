@@ -53,6 +53,7 @@ if(isset($_POST['cari'])){
  <th>Alamat</th>
  <th>Jenis Kelamin</th>
  <th>Hobi</th>
+ <th>No telepon</th>
  <th>Aksi</th>
  </tr>
  <?php foreach($results as $result) : ?>
@@ -63,6 +64,7 @@ if(isset($_POST['cari'])){
  <td><?php echo $result['alamat']?></td>
  <td><?php echo $result['jk']?></td>
  <td><?php echo $result['hobi']?></td>
+ <td><?php echo $result['notelp']?></td>
  <td>
  <a href="edit.php?id=<?php echo $result['id']?>">Edit </a> |
  <a href="delete.php?id=<?php echo $result['id']?>">Delete</a> 

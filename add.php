@@ -27,6 +27,9 @@ include('connection.php'); // Mengkoneksikan dengan database
  <option value="olahraga">Olahraga</option>
  </select>
  <br/><br/>
+ <label>No Telepon</label><br/>
+ <input type="text" name="notelp"/>
+ <br/><br/>
  <button type="submit">Tambah</button>
  </form>
 </html>
