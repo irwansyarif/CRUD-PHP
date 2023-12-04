@@ -28,7 +28,7 @@ include('connection.php'); // Mengkoneksikan dengan database
  </select>
  <br/><br/>
  <label>No Telepon</label><br/>
- <input type="tel" name="notelp"/>
+ <input type="tel" name="notelp" />
  <br/><br/>
  <button type="submit">Tambah</button>
  </form>
