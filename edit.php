@@ -27,7 +27,7 @@ $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
  </select>
 </br></br>
 <label>No Telepon</label><br/>
- <input type="text" name="notelp" value="<?php echo $result[0]['notelp']?>"/><!--menampilkan data sesuai dr variabel $result diatas-->
+ <input type="tel" name="notelp" value="<?php echo $result[0]['notelp']?>"/><!--menampilkan data sesuai dr variabel $result diatas-->
  <br/><br/>
  <button type="submit">Perbaharui</button>
  </form>
