@@ -4,8 +4,16 @@ $id = $_GET['id']; // Untuk mengambil id yang dilempar dari form list.php
 $query = mysqli_query($connect,"SELECT * FROM mahasiswa WHERE id='$id' LIMIT 1");//mengambil data sesuai dengan id nya
 $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 ?>
+<style>
+ 
+    form {
+        position: center;
+        margin: auto;
+        
+    }
+</style>
 <html>
- <form action="update.php" method="post">
+ <form action="update.php" method="post" >
  <input type="hidden" name="id" value=<?php echo $result[0]['id']?>> <!--untuk menyimpan id tanpa menampilkan data id pada form-->
  <label>NIM</label><br/>
  <input type="text" name="nim" value="<?php echo $result[0]['nim']?>"/><!--menampilkan data sesuai dr variabel $result diatas-->

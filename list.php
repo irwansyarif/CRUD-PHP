@@ -25,6 +25,7 @@ if(isset($_POST['cari'])){
 }
 
 ?>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -37,7 +38,7 @@ if(isset($_POST['cari'])){
     <div class="container-md">
     <button type="button" class="btn-primary btn-sm"><a class="text-black"href="add.php">Tambah Data</a></button>
     <br></br>
-    <form action="" method="post">
+    <form action="" method="post" >
 
     <input type="text" name="keyword" size="30" placeholder="Masukan Pencarian" autocomplete="off">
     <button type="submit" name="cari">Cari</button> 
@@ -75,8 +76,10 @@ if(isset($_POST['cari'])){
  </table>
   <br></br>
 
-  <?php if($halamanAktif > 1) : ?>
-  <a href="?halaman=<?= $halamanAktif - 1;?>">&laquo;</a>
+  <div class="position-absolute top-75 start-50  container" >
+
+      <?php if($halamanAktif > 1) : ?>
+        <a href="?halaman=<?= $halamanAktif - 1;?>">&laquo;</a>
   <?php endif; ?>
   <?php for($i =1; $i <= $jumlahHalaman; $i++) :?>
     <?php if($i == $halamanAktif) : ?>
@@ -84,12 +87,13 @@ if(isset($_POST['cari'])){
     <a href="?halaman=<?= $i; ?>"></a>
     <?php else : ?>
         <a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
-    <?php endif; ?>
-<?php endfor; ?>
-<?php if($halamanAktif < $jumlahHalaman) : ?>
-  <a href="?halaman=<?= $halamanAktif + 1;?>">&raquo;</a>
-  <?php endif; ?>
-
+        <?php endif; ?>
+        <?php endfor; ?>
+        <?php if($halamanAktif < $jumlahHalaman) : ?>
+            <a href="?halaman=<?= $halamanAktif + 1;?>">&raquo;</a>
+            <?php endif; ?>
+        </div>
+            
 
  </div>
 
